@@ -19,18 +19,18 @@ export default class ShellProvider {
       this.logger.debug(`Executing shell command: ${command}`);
       exec(command, (error, stdout, stderr) => {
         if (stdout) {
-          this.logger.debug(`Shell command output: ${stdout}`);
+          this.logger.debug(`Shell command stdout: ${stdout}`);
           resolve(stdout);
         }
 
         if (error) {
-          this.logger.warn(`Shell command error: ${stdout}`);
+          this.logger.warn(`Shell command error: ${error.message}`);
           reject(error);
           return;
         }
 
         if (stderr) {
-          this.logger.warn(`Shell command stderr: ${stdout}`);
+          this.logger.warn(`Shell command stderr: ${stderr}`);
           reject(stderr);
           return;
         }
