@@ -16,7 +16,7 @@ npm i
 ## How to use
 
 Type `aconnect -l` so you can see which MIDI controllers you got in your system.
-Rename `.env-example` to `.env` and edit the env variable `CONNECTIONS` accordingly to how you want to connect them. I suggest using client names instead of ids, to avoid missing connections when the client ids are changed.
+Rename `.env-example` to `.env` and edit the env variable `CONNECTIONS` accordingly to how you want to connect them.
 
 ```
 $ sudo aconnect -l
@@ -57,7 +57,7 @@ $ pm2 monit acconectnode
 
 ## Todo
 
-[ ] - CI tests
+[ ] - Changelog
 
 ---
 

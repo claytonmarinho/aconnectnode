@@ -17,10 +17,16 @@ const Joi = joi.extend(joi => ({
         .split(';')
         .map(connection => connection.trim())
         .filter(Boolean)
-        .map(connection => ({
-          source: connection.split(',')[0],
-          destination: connection.split(',')[1],
-        })),
+        .map(connection => {
+          const [source, destination] = connection.split(',');
+          const [sourceName, sourcePort = 0] = source.split(':');
+          const [destinationName, destinationPort = 0] = destination.split(':');
+
+          return {
+            source: `"${sourceName}":${sourcePort}`,
+            destination: `"${destinationName}":${destinationPort}`,
+          };
+        }),
     };
   },
 }));
@@ -56,7 +62,9 @@ const configSchema = Joi.object({
   port: Joi.number().default(9010),
   logLevel: Joi.string().default('debug'),
   connections: Joi.connections().items(connectionSchema).min(1),
-  reconnectInterval: Joi.number().default(60 * 1000),
+  reconnectInterval: Joi.Joi.alternatives()
+    .try(Joi.number(), Joi.string())
+    .default(60 * 1000),
 });
 
 /**
@@ -70,6 +78,10 @@ const configProvider = () => {
   const { error, value: validatedEnvConfig } = configSchema.validate(config, {
     convert: true,
   });
+
+  if (typeof validatedEnvConfig.reconnectInterval === 'string') {
+    validatedEnvConfig.reconnectInterval = parseInt(validatedEnvConfig.reconnectInterval);
+  }
 
   if (error) {
     throw new Error(`Config validation error: ${error.message}`);
