@@ -9,12 +9,9 @@ I wrote this project to help me keep my MIDI devices connected in a [SBC](https:
 ## Install
 
 ```
-sudo -s
 git clone https://github.com/claytonmarinho/aconnectnode && cd aconnectnode
 npm i
 ```
-
-Obs: Use root user as aconnect will ask for root privileges.
 
 ## How to use
 
@@ -22,7 +19,7 @@ Type `aconnect -l` so you can see which MIDI controllers you got in your system.
 Rename `.env-example` to `.env` and edit the env variable `CONNECTIONS` accordingly to how you want to connect them. I suggest using client names instead of ids, to avoid missing connections when the client ids are changed.
 
 ```
-$ aconnect -l
+$ sudo aconnect -l
 client 0: 'System' [type=kernel]
     0 'Timer           '
     1 'Announce        '

@@ -1,7 +1,7 @@
 {
   "name": "aconnectnode",
   "version": "0.0.1",
-  "description": "A node project to connect to aconnect",
+  "description": "Keep MIDI devices connected with ease.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -9,7 +9,6 @@
     "start": "node ./src/index.js"
   },
   "author": "Clayton Marinho <claytonmarinho@gmail.com>",
-  "license": "ISC",
   "dependencies": {
     "awilix": "^8.0.0",
     "bunyan": "^1.8.15",
@@ -39,5 +38,6 @@
     "alsa",
     "alsa-tools",
     "midi"
-  ]
+  ],
+  "license": "MIT"
 }
