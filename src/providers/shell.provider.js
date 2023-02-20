@@ -5,7 +5,9 @@ export default class ShellProvider {
    *
    * @param {import('../container').Context} context
    */
-  constructor() {}
+  constructor({ logger }) {
+    this.logger = logger;
+  }
 
   /**
    *
@@ -14,8 +16,10 @@ export default class ShellProvider {
    */
   exec = command =>
     new Promise((resolve, reject) => {
+      this.logger.debug(`Executing shell command: ${command}`);
       exec(command, (error, stdout, stderr) => {
         if (stdout) {
+          this.logger.debug(`Shell command output: ${stdout}`);
           resolve(stdout);
         }
 
