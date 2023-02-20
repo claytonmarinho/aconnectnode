@@ -31,7 +31,7 @@ client 24: 'Morningstar MC8' [type=kernel,card=2]
     0 'Morningstar MC8 MIDI 1'
 
 ## change your .env file:
-CONNECTIONS='"Morningstar MC8","H9 Pedal"'
+CONNECTIONS=Morningstar MC8:0,H9 Pedal:0
 RECONNECT_INTERVAL=60000 # -> useful for situations such when you want to re-estabilish connections without rebooting.
 ```
 
