@@ -24,11 +24,13 @@ export default class ShellProvider {
         }
 
         if (error) {
+          this.logger.warn(`Shell command error: ${stdout}`);
           reject(error);
           return;
         }
 
         if (stderr) {
+          this.logger.warn(`Shell command stderr: ${stdout}`);
           reject(stderr);
           return;
         }
