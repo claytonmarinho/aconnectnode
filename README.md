@@ -25,13 +25,23 @@ client 0: 'System' [type=kernel]
     1 'Announce        '
 client 14: 'Midi Through' [type=kernel]
     0 'Midi Through Port-0'
-client 20: 'H9 Pedal' [type=kernel,card=1]
-    0 'H9 Pedal MIDI 1 '
-client 24: 'Morningstar MC8' [type=kernel,card=2]
+client 20: 'Morningstar MC8' [type=kernel,card=1]
     0 'Morningstar MC8 MIDI 1'
+    1 'Morningstar MC8 MIDI 2'
+    2 'Morningstar MC8 MIDI 3'
+    3 'Morningstar MC8 MIDI 4'
+client 24: 'DOREMiDi-hub' [type=kernel,card=2]
+    0 'DOREMiDi-hub MIDI 1'
+    1 'DOREMiDi-hub MIDI 2'
+    2 'DOREMiDi-hub MIDI 3'
+client 28: 'H9 Pedal' [type=kernel,card=3]
+    0 'H9 Pedal MIDI 1 '
 
-## change your .env file:
-CONNECTIONS=Morningstar MC8:0,H9 Pedal:0
+## change your .env file
+## MC8 -> H9; MC8 -> hub on port 2
+## default port is 0
+CONNECTIONS=Morningstar MC8,H9 Pedal;Morningstar MC8,DOREMiDi-hub:2
+
 RECONNECT_INTERVAL=60000 # -> useful for situations such when you want to re-estabilish connections without rebooting.
 ```
 
