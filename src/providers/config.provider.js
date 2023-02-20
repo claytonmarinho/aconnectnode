@@ -62,7 +62,7 @@ const configSchema = Joi.object({
   port: Joi.number().default(9010),
   logLevel: Joi.string().default('debug'),
   connections: Joi.connections().items(connectionSchema).min(1),
-  reconnectInterval: Joi.Joi.alternatives()
+  reconnectInterval: Joi.alternatives()
     .try(Joi.number(), Joi.string())
     .default(60 * 1000),
 });
