@@ -1,6 +1,6 @@
 {
   "name": "aconnectnode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Keep MIDI devices connected with ease.",
   "main": "src/index.js",
   "type": "module",
